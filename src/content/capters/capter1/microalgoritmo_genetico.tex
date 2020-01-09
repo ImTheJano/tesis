@@ -1,0 +1,51 @@
+\subsection{Algoritmo gen\'etico}
+
+Un algoritmo gen\'etico (AG) requiere para trabajar codificar
+las variables a ser optimizadas. Estas variables forman
+una cadena, idea correspondiente con el cromosoma en biolog\'ia.
+Cada variable real se representa como una subcadena
+binaria, parte de la cadena final o cromosoma.
+
+El azar constituye el elemento conductor de la fuerza de
+un AG que lo hace un optimizador eficiente. El operador mutaci\'on
+es una fuente de azar en los algoritmos gen\'eticos cl\'asicos.
+Una propuesta distinta conocida como micro-AG trata
+de restablecer ocasionalmente la poblaci\'on en el proceso de
+b\'usqueda global, por tal efecto se requiere de una poblaci\'on
+peque\~na.
+
+El AG comienza con la construcci\'on de una poblaci\'on
+inicial aleatoria con una longitud de cromosoma dependiente
+de la cantidad de par\'ametros a ser optimizados. El paso
+siguiente consiste en evaluar a cada individuo de la poblaci\'on
+con lo que se le asigna un valor de aptitud. La selecci\'on simula
+el proceso de selecci\'on natural donde un individuo con alto
+puntaje de aptitud se reproduce, y aquel individuo con puntajes
+pobres es eliminado. Aqu\'i se considera la selecci\'on por
+torneo, donde aleatoriamente se eligen dos individuos de la
+poblaci\'on, sus puntajes de aptitud son comparados, aquel con
+mayor valor se mantiene para la siguiente etapa, este proceso
+se repite hasta tener un n\'umero considerable de individuos.
+
+La poblaci\'on se actualiza por operaciones de apareamiento
+y cruzamiento. La operaci\'on de cruzamiento lleva a cabo
+el intercambio aleatorio de informaci\'on gen\'etica entre pares
+de individuos para crear a sus descendientes. Se emplea cruzamiento
+uniforme, en el cual se consideran diversos puntos
+de cruzamiento determinados aleatoriamente en conjunci\'on
+con sus respectivas posiciones en el cromosoma.
+
+Por \'ultimo, en cada generaci\'on se verifica la convergencia
+de la poblaci\'on. \'esta se mide por $D$ que define las diferencias
+entre el individuo m\'as apto con el resto de los individuos
+de la poblaci\'on. Se\~nal que la poblaci\'on evoluciona es que
+$D\geq\epsilon\geq0.05$ en tal caso se pasa a la siguiente generaci\'on.
+En otro caso se aplica elitismo, esto significa dejar al individuo
+m\'as apto, y restablecer la poblaci\'on aleatoriamente.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{img/fig_geneticAlgorithm.png}
+	\caption{Algoritmo genetico.}
+	\label{fig:algoritmo genetico}
+\end{figure}

@@ -1,0 +1,75 @@
+\subsection{Mec\'anica cu\'antica}
+
+Sinergia entre redes neuronales artificiales, algoritmo
+gen\'eticos y mec\'anica cu\'antica. Un sistema cu\'antico
+uno-dimensional es gobernado por la ecuaci\'on de Schr\"odinger:
+
+\begin{equation}
+	\widehat{H}\Psi(x)=(-\frac{\hbar^2}{2\mu}\nabla^2+V(x))\Psi(x)=E\Psi(x)
+	\label{schrodinger}
+\end{equation}
+
+Donde, $\mu$ y $V(x)$ representan la masa de la part\'icula y el
+potencial externo, $\widehat{H}$, $\Psi(x)$ y $E$ representan al sistema
+Hamiltoniano, la funci\'on propia y el valor propio respectivamente.
+La soluci\'on de (\ref{schrodinger}) es representada por la funci\'on
+propia de prueba, la red neuronal artificial y el algoritmo
+gen\'etico. La b\'usqueda de la soluci\'on se lleva a cabo por el
+AG, entonces la soluci\'on o funci\'on de prueba se codifica en
+un cromosoma. Se lleva a cabo una optimizaci\'on determinista
+sobre la RNA con objetivo de afinar la soluci\'on. La identidad
+de un estado cu\'antico se representa por una funci\'on de onda
+en el correspondiente espacio vectorial. En general la funci\'on
+de onda $\psi(x)$ se expresa como: 
+
+\begin{equation}
+	\Psi(x)=A(x)sen[S(x)]\label{fonda}
+\end{equation}
+
+Donde $A(x)$ es la amplitud de onda y $S(x)$ es la fase de la
+funci\'on onda. La representaci\'on por medio de la RNA recibe
+como estimulo la coordenada $x$ y responde con dos valores
+de salida cada uno asociado con $A(x)$ y $B(x)$. En t\'erminos
+de (\ref{salida}) y (\ref{estimulo}), la relaci\'on entre la RNA y la funci\'on de onda
+se expresa como $o_1=A(x)$, $o_2=S(x)$ y $n_1=x$. Por
+\'ultimo, la representaci\'on con el AG se define con base en
+los par\'ametros de la RNA. Cada conjunto de par\'ametros de
+la RNA corresponde con una funci\'on de onda especifica, en
+el cromosoma del AG se codifican estos par\'ametros que representan
+la identidad \'unica de un estado cu\'antico. El valor
+propio $E$ se codifica en el cromosoma junto con los par\'ametros
+de la red, \'este identifica a cada conjunto de par\'ametros y
+por ende a cada funci\'on de onda.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7cm]{img/fig_nnGaWf.png}
+	\caption{Diferente representaci\'on de identidad del estado cuantico}
+	\label{fig:nnGaWf}
+\end{figure}
+
+Para localizar una soluci\'on aproximada en el espacio de
+b\'usqueda, el AG es utilizado como pre-optimizador, para ello
+es necesario determinar la funci\'on de aptitud $f$, la cual
+representa el medio ambiente dentro del AG. Para ello se define la
+cantidad que refleja el error contenido en la funci\'on de prueba
+$\Psi(x)$:
+	
+\begin{equation}
+	R=\frac{\left\langle\Psi|(\hat{H}-E)^2|\Psi\right\rangle}{\left\langle\Psi|\Psi\right\rangle}=\frac{\int|(\hat{H}-E)|\Psi(x)|^2 dx}{\int|\Psi(x)|^2 dx}
+	\label{error}
+\end{equation}    
+
+La funci\'on propia que satisface (\ref{schrodinger}) se asocia con $R=0$.
+La funci\'on de aptitud para el problema de optimizaci\'on relacionado
+con el algoritmo gen\'etico, y que se busca maximizar se expresa como:
+
+\begin{equation}
+	f=e^{-R}
+\end{equation}
+
+El resolver el problema de optimizaci\'on con el AG,
+implica encontrar la funci\'on propia y su correspondiente valor
+propio, esto implica encontrar una soluci\'on de la ecuaci\'on
+(\ref{schrodinger}). El operador $\nabla^2$ que aparece en el Hamiltoniano puede
+ser evaluado por la ecuaci\'on (\ref{lamda}).
