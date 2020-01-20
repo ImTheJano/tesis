@@ -1,14 +1,14 @@
 \subsection{Red neuronal artificial}
-Una red neuronal (RN) es un modelo constituido por un
+Una red neuronal artificial (RNA) es un modelo constituido por un
 n\'umero masivo de unidades de c\'omputo de dise\~no simple
-conocidas como neuronas. La figura \ref{fig:neurona}  muestra un ejemplo
+conocidas como neuronas. La figura \ref{fig:neuron}  muestra un ejemplo
 de una neurona.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5cm]{img/fig_neuron.png}
 	\caption{Modelo de unidad de c\'omputo simple, neurona.}
-	\label{fig:neurona}
+	\label{fig:neuron}
 \end{figure}
 
 Todas las se\~nales que ingresan a la neurona son sumadas,
@@ -20,7 +20,7 @@ se hace uso de la siguiente ecuaci\'on:
 	\sigma(z)=\frac{1-e^{-kz}}{1+e^{-kz}}
 \end{equation}
 
-La figura \ref{fig:activa} considera $k=1$, conforme $k\rightarrow\infty$ la funci\'on
+La figura \ref{fig:activationFunc} considera $k=1$, conforme $k\rightarrow\infty$ la funci\'on
 $\sigma(z)$ se comporta como una funci\'on escal\'on. Es conveniente
 considerar a la funci\'on de activaci\'on con una inclinaci\'on
 moderada con esto la respuesta de la red estar\'a dentro de un
@@ -31,7 +31,7 @@ de la red.
 	\centering
 	\includegraphics[width=5cm]{img/fig_activationFunction.png}
 	\caption{Gr\'afica de  la funci\'on de activaci\'on.}
-	\label{fig:activa}
+	\label{fig:activationFunc}
 \end{figure}
 
 Se considera una RNA de tres capas cuya topolog\'ia se
@@ -52,22 +52,22 @@ matem\'aticamente se expresa como:
 
 \begin{equation}
 	o_i=\sigma(n_i)
-	\label{entrada}
+	\label{input}
 \end{equation}
 \begin{equation}
 	o_j=\sigma(n_j)
-	\label{oculta}
+	\label{hidden}
 \end{equation}
 \begin{equation}
 	o_k=\sigma(n_k)
-	\label{salida}
+	\label{output}
 \end{equation}
 
 Las entradas a cada distinto tipo de neurona dependiendo
 de la capa a la que pertenece, se expresa de siguiente forma:
 
 \begin{equation}
-	n_i=\text{est\'imulos ambientales de la RNA} \label{estimulo}
+	n_i=\text{est\'imulos ambientales de la RNA} \label{stimulus}
 \end{equation}
 \begin{equation}
 	n_j=\sum^{N_i}_{i=1}w_{ij}o_i+\theta_j
@@ -88,7 +88,7 @@ y moderar la respuesta de la red. La respuesta total por parte
 de la red esta dada por:
 
 \begin{equation}
-	o_k=\sum^{N_j}_{j=1}w_{jk}\sigma(\sum^{N_i}_{i=1}w_{ij}n_i+\theta_j)+\theta_k
+	o_k=\sum^{N_j}_{j=1}w_{jk} \sigma \left(\sum^{N_i}_{i=1}w_{ij}n_i+\theta_j\right)+\theta_k
 \end{equation}
 
 Al derivar $o_k$ con respecto a los par\'ametros que definen
@@ -97,15 +97,19 @@ de ecuaciones:
 
 \begin{equation}
 	\frac{\partial o_k}{\partial w_{ij}}=w_{jk}\sigma' (n_j)n_i
+	\label{derivativeOfO_kRespectW_ij}
 \end{equation}
 \begin{equation}
 	\frac{\partial o_k}{\partial w_{jk}}=\sigma (n_j)\delta_{kk'}
+	\label{derivativeOfO_kRespectW_jk}
 \end{equation}
 \begin{equation}
 	\frac{\partial o_k}{\partial \theta_j}=w_{jk}\sigma' (n_j)
+	\label{derivativeOfO_kRespectTheta_j}
 \end{equation}
 \begin{equation}
 	\frac{\partial o_k}{\partial \theta_k}=\delta_{kk'}
+	\label{derivativeOfO_kRespectTheta_k}
 \end{equation}
 
 

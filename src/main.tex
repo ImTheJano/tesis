@@ -1,13 +1,13 @@
-\documentclass[oneside,numbers,spanish]{ezthesis}
+\documentclass[oneside,numbers,english,spanish]{ezthesis}
 \usepackage{subfig}
 \usepackage{nopageno,rmfbib,multicol,times,epsf,amsmath,amssymb}
 \usepackage[latin1]{inputenc}
-\usepackage[spanish]{babel}
+%\usepackage[spanish]{babel}
 \usepackage{graphicx}
 \usepackage{float}
 
 \author{Alejandro Garc\'ia Montiel}
-\title{Soluci\'on a algoritmo de Shrodinger mediante algoritmos de inteligencia artificial}
+\title{Soluci\'on a la ecuaci\'on de Shrodinger mediante algoritmos de inteligencia artificial}
 \degree{Ingeniero en sistemas computaconales}
 \supervisor{Roberto Castro Lopez}
 \institution{Tecnologico Nacional De Mexico}
@@ -16,15 +16,18 @@
 
 \hyperlinking
 \begin{document}
-	\include{content/titlepage}
-	\include{content/preface/acknowledgement}
-	\tableofcontents
-	\include{content/preface/intro}
-	\include{content/preface/summary}
-	\include{content/preface/abstract}
-	\include{content/capters/capter1/capter1}
+	\include{content/titlepage} %portada
+	\include{content/preface/acknowledgement} %agradecimientos
+	\tableofcontents %tabla de contenido
+	\include{content/preface/intro} %introduccion
+	\include{content/preface/summary} %resumen
+	\include{content/preface/abstract} %abstract
 
-	\appendix
-\bibliography{biblio}
+	%contenido
+	\include{content/capters/capter1/capter1}
+	\include{content/capters/capter2/capter2}
+
+	\appendix %apendice
+	\bibliography{biblio} %bibliografia
 
 \end{document}
