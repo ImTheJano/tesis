@@ -1,0 +1,98 @@
+\section{Ecuaci\'on de Schr\"odinger}
+Erwin Schr\"odinger postul\'o que la ecuaci\'on para una onda $\Psi(x,t) $
+deb\'ia ser, en el caso estacionario, es decir cuando no hay dependencia del
+tiempo
+
+\begin{equation*}
+	H(x, \widehat{p}) \Psi(x,t) = E \Psi(x,t), \ \ \ 
+	\widehat{p}=-i\hbar\frac{\partial}{\partial x '}
+\end{equation*}
+
+donde $E$ era la energ\'ia del sistema asociado a la onda $\Psi$. Es decir, en el
+caso cuando tenemos un Hamiltoniano est\'andar,
+
+\begin{equation*}
+	H(x,p)=\frac{p^2}{2m}+V(x)
+\end{equation*}
+
+siendo $V(x)$ la funci\'on potencial (energ\'ia potencial), se tiene la ecuaci\'on de diferencial
+
+\begin{equation}
+	-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x) \Psi(x,t) = E\Psi(x,t)
+	\label{schrodinger_eq_3}
+\end{equation}
+
+Una de las pruebas de fuego de su ecuaci\'on fue el caso $V(x)=0$, es decir cuando se ten\'ia el
+movimiento de una part\'icula libre. Si consideramos el caso unidimensional, y hacemos $V (x) = 0$,
+la soluci\'on deb\'ia ser una onda plana del tipo
+
+\begin{equation*}
+	\Psi(x,t)=A cos(kx+wt), \ \ \ 
+	k=\frac{2\pi}{\lambda}
+\end{equation*}
+
+Si sustituimos este valor en la ecuaci\'on de Schr\"odinger tenemos el valor
+
+\begin{equation*}
+	E=\frac{h^2 k^2}{2m}
+\end{equation*}
+
+que igualado con el valor de la energ\'ia cin\'etica --recordemos que $V(x)=0$-- nos da
+
+\begin{equation*}
+	p=\hbar k = \frac{2 \pi \hbar}{\lambda}
+\end{equation*}
+
+que justamente era la f\'ormula que hab\'ia postulado De Broglie.
+
+Pero su mayor \'exito estaba por llegar. Schr\"odinger decidi\'o aplicar su ecuaci\'on al \'atomo de
+hidr\'ogeno. Como en este caso el potencial era
+
+\begin{equation*}
+	V(r)=-\frac{e^{2}}{r}, \ \ \ 
+	r=\sqrt{x^2+y^2+z^2}
+\end{equation*}
+
+obtuvo la ecuaci\'on
+
+\begin{equation}
+	-\frac{\hbar^2}{-2m}
+	\left( \frac{\partial^2}{\partial x^2} \frac{\partial^2}{\partial y^2} \frac{\partial^2}{\partial z^2} \right)
+	\Psi(x,y,z)-\frac{e^{2}}{r} \Psi(x,y,z)= E \Psi(x,y,z)
+	\label{schrodinger_eq_8}
+\end{equation}
+
+A esta ecuaci\'on volveremos m\'as adelante. Lo importante era que Schr\"odinger sab\'ia como tratar
+este tipo de ecuaciones y la resolvi\'o. Primero la escribi\'o en coordenadas esf\'ericas y luego aplic\'o la
+separaci\'on de variables. La parte angular del laplaciano, $ \Delta := \frac{\partial^2}{\partial x^2} \frac{\partial^2}{\partial y^2} \frac{\partial^2}{\partial z^2} $ en coordenadas
+esf\'ericas era muy sencilla de resolver apareciendo las funciones o arm\'onicos esf\'ericos de Laplace.
+En particular Schr\"odinger obtuvo para los valores de la energ\'ia en el estado estacionario del
+\'atomo de hidr\'ogeno la f\'ormula
+
+\begin{equation*}
+	E_n = -\frac{me^4}{2\hbar}\frac{1}{n^2}
+\end{equation*}
+
+que era la misma de Bohr
+
+Finalmente Schr\"odinger, igual que hizo Heisenberg, <<dedujo>> una ecuaci\'on para la din\'amica
+de un sistema, que en el caso unidimensional tiene la forma
+
+\begin{equation*}
+	H \left( x,-i \hbar \frac{\partial}{\partial x} \right) \Psi(x,t) =
+	i\hbar \frac{\partial}{\partial t} \Psi(x,t)
+\end{equation*}
+
+Si tenemos un Hamiltoniano est\'andar, \'esta se transforma en
+
+\begin{equation*}
+	-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} \Psi(x,t) + V(x) \Psi(x,t)=
+	i\hbar \frac{\partial}{\partial t} \Psi(x,t)
+\end{equation*}
+
+En particular, de \ref{schrodinger_eq_3} se pod\'ia deducir f\'acilmente la ecuaci\'on 
+\ref{schrodinger_eq_8}, para los sistemas, introduciendo la factorizaci\'on
+
+\begin{equation*}
+	\Psi(x,t)=\Psi(x) exp \left( -\frac{iEt}{\hbar} \right)
+\end{equation*}

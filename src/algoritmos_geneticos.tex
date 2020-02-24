@@ -1,0 +1,53 @@
+\section{Algoritmos geneticos}
+La computaci\'on evolutiva es la rama de la inteligencia artificial que engloba
+a todas aquellas t\'ecnicas de resoluci\'on de problemas basadas en la evoluci\'on
+de las especies y la supervivencia del m\'as apto.
+Dentro de ella encontramos a los algoritmos gen\'eticos (genetic algorithms), las
+estrategias evolutivas (evolution strategies) y la programaci\'on evolutiva
+(evolutionary programming) entre otros.
+Las t\'ecnicas evolutivas han sido aplicadas con \'exito a distintos tipos de
+problemas como optimizaci\'on de par\'ametros, planificaci\'on de tareas, dise\~no,
+etc.
+Estos algoritmos codifican las posibles soluciones en estructuras llamadas
+cromosomas (o individuos). A un conjunto de individuos se lo conoce como
+poblaci\'on y representan un conjunto de soluciones posibles al problema.
+Mediante la aplicaci\'on de un conjunto de operadores
+gen\'eticos sobre la poblaci\'on se va refinando gradualmente la soluci\'on hasta
+alcanzar un resultado que cumpla con las condiciones requeridas.
+El primer paso en la aplicaci\'on de un algoritmo gen\'etico consiste en la
+generaci\'on de una poblaci\'on inicial. En general esta poblaci\'on se genera de
+manera aleatoria, y el tama\~no de dicha poblaci\'on (la cantidad de individuos que
+la compone) es un par\'ametro que se define durante el dise\~no del algoritmo
+gen\'etico. Una vez generada esta poblaci\'on se debe evaluar la aptitud (fitness)
+de cada individuo.
+El operador de selecci\'on es el encargado de decidir cuales individuos
+contribuir\'an en la formaci\'on de la pr\'oxima generaci\'on de individuos. Este
+mecanismo simula el proceso de selecci\'on natural, mediante el cual s\'olo los
+individuos m\'as adaptados al ambiente se reproducen. El
+mecanismo de selecci\'on forma una poblaci\'on intermedia, que esta compuesta
+por los individuos con mayor aptitud de la generaci\'on actual.
+La siguiente fase del algoritmo consiste en la aplicaci\'on de los operadores
+gen\'eticos. El primero de ellos es la cruza, y su funci\'on es recombinar el
+material gen\'etico. Se toman aleatoriamente dos individuos que hayan
+sobrevivido al proceso de selecci\'on y se recombina su material gen\'etico
+creando uno o m\'as descendientes, que pasan a la siguiente poblaci\'on. Este
+operador se aplica tantas veces como sea necesario para formar la nueva
+poblaci\'on.
+El \'ultimo paso consiste en la aplicaci\'on del operador de mutaci\'on. Este
+operador, que en general act\'ua con muy baja probabilidad, modifica algunos
+genes del cromosoma, posibilitando de esta manera la b\'usqueda de soluciones
+alternativas.
+
+Una vez finalizado el proceso de selecci\'on, cruza y mutaci\'on se obtiene la
+siguiente generaci\'on del algoritmo, la cual ser\'a evaluada, repiti\'endose el ciclo
+descripto previamente. Tras cada iteraci\'on la calidad de la soluci\'on
+generalmente va increment\'andose, y los individuos representan mejores
+soluciones al problema.
+Al algoritmo gen\'etico detallado anteriormente se lo conoce como algoritmo
+gen\'etico can\'onico y es la forma m\'as utilizada. Sin embargo, en algunas
+implementaciones particulares de algoritmos gen\'eticos se puede agregar
+nuevos operadores. En todos los casos, la forma en que se implementen los
+operadores variar\'a de acuerdo a las caracter\'isticas propias del problema. 
+	\input{content/chapters/chapter5/cromosoma}
+
+	%http://laboratorios.fi.uba.ar/lsi/bertona-tesisingenieriainformatica.pdf

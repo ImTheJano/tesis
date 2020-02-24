@@ -1,0 +1,52 @@
+\subsection{C\'alculos}
+Derivadas de $O_k$ (Salida de la red)
+
+\begin{equation*}
+	\frac{\partial o_k}{\partial w_{jk}} = \frac{ \partial \left( \sum \limits_{j=1} ^ {N_j} w_{jk} \sigma (o_j) + \theta _k \right) }{ \partial w_{jk} }
+\end{equation*}
+
+\begin{equation*}
+	=\frac{ \partial \left( \sum \limits_{j=1} ^ {N_j} w_{jk} \sigma \left( \sum\limits_{i=1}^{N_i} w_{ij}n_i+\theta _j \right) + \theta _k \right) }{ \partial w_{jk} }
+\end{equation*}
+
+\begin{equation*}
+	=\sum\limits_{j=1}^{N_j} \left( \frac{ w_{jk}\partial \sigma \left( \sum\limits_{i=1}^{N_i} w_{ij}n_i+\theta _j \right) }{ \partial w_{jk} } \right)
+\end{equation*}
+
+\begin{equation*}
+	=\sum\limits_{j=1}^{N_j} \left( \frac{ w_{jk}\partial \sigma \left( \sum\limits_{i=1}^{N_i} w_{ij}n_i+\theta _j \right) +\sigma \left( \sum\limits_{i=1}^{N_i} w_{ij}n_i+\theta _j \right) }{ \partial w_{jk} } \right)
+\end{equation*}
+
+\begin{equation*}
+	= \sigma \left( n_j \right) \frac{\partial w_{jk}}{w_{jk}} \longleftrightarrow j=k \Rightarrow \frac{\partial w_{jk}}{w_{jk}}=1
+\end{equation*}
+
+\begin{equation}
+	\therefore \frac{\partial o_k}{\partial w_{jk}} = \sigma \left( n_j \right) \delta_{k k'}
+\end{equation}
+
+
+\begin{equation*}
+	\frac{\partial o_k}{\partial \theta_j} = \frac{ \partial \left( \sum \limits_{j=1} ^ {N_j} w_{jk} \sigma (o_j) + \theta _k \right) }{ \partial \theta_j }
+\end{equation*}
+
+\begin{equation*}
+	=\sum\limits_{j=1}^{N_j} w_{jk} \frac{\partial \sigma \left( o_j \right)}{\partial \theta_j} + \frac{\sigma \left( o_j \right)}{\partial \theta_j}
+\end{equation*}
+
+\begin{equation*}
+	=w_{jk}\theta \left( n_j \right) \frac { \partial \left( \sum\limits_{i=1}^{N_i} w_{ij} n_i + \theta_j \right) }{ \partial \theta_j }
+\end{equation*}
+
+\begin{equation}
+	\therefore \frac{\partial o_k}{\partial \theta_j} = w_{jk}\sigma'(n_j)
+\end{equation}
+
+
+\begin{equation*}
+	\frac{\partial o_k}{\partial \theta_k} = \frac{ \partial \left( \sum \limits_{j=1} ^ {N_j} w_{jk} \sigma (o_j) + \theta _k \right) }{ \partial \theta_k }
+\end{equation*}
+
+\begin{equation}
+	\therefore \frac{\partial o_k}{\partial \theta_k} = \delta_{kk'}
+\end{equation}

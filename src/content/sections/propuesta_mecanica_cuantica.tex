@@ -1,0 +1,142 @@
+\section{Mec\'anica cu\'antica}
+
+Se considera la aplicaci\'on de AG y RNA a un c\'alculo mec\'anico
+cu\'antico. El sistema cu\'antico unidimensional (1D) se rige por
+la ecuaci\'on de Schr\"dinger
+
+\begin{equation}
+	\widehat{H}\Psi(x)=\left(-\frac{\hbar^2}{2\mu}\nabla^2+V(x)\right)\Psi(x)=E\Psi(x)
+	\label{schrodinger}
+\end{equation}
+
+Donde, $\mu$ y $V(x)$ representan la masa de la part\'icula y el
+potencial externo, $\widehat{H}$, $\Psi(x)$ y $E$ representan al sistema
+Hamiltoniano, la funci\'on propia y el valor propio respectivamente.
+Antes de utilizar la RNA y el AG, necesitamos hacer cumplir la correspondencia
+uno a uno entre las diferentes representaciones de la soluci\'on; la funci\'on
+propia, la red neuronal y la cadena del algoritmo gen\'etico. Para iniciar la b\'usqueda de soluci\'on
+global por AG, representamos la funci\'on de prueba en forma de cadena de AG.
+Por otro lado, nuestro objetivo es aplicar el optimizador determinista bajo
+la representaci\'on RNA para refinar la soluci\'on. La \ref{fig:nnGaWf} describe
+esquem\'aticamente la relaci\'on entre esas tres representaciones diferentes.
+
+La soluci\'on de (\ref{schrodinger}) es representada por la funci\'on
+propia de prueba, la red neuronal artificial y el algoritmo
+gen\'etico. La b\'usqueda de la soluci\'on se lleva a cabo por el
+AG, entonces la soluci\'on o funci\'on de prueba se codifica en
+un cromosoma. Se lleva a cabo una optimizaci\'on determinista
+sobre la RNA con objetivo de afinar la soluci\'on. La identidad
+de un estado cu\'antico se representa por una funci\'on de onda
+en el correspondiente espacio vectorial. En general la funci\'on
+de onda $\psi(x)$ se expresa como: 
+
+\begin{equation}
+	\Psi(x)=A(x)sen[S(x)]\label{waveFunc}
+\end{equation}
+
+Donde $A(x)$ es la amplitud de onda y $S(x)$ es la fase de la
+funci\'on onda. La representaci\'on por medio de la RNA recibe
+como estimulo la coordenada $x$ y responde con dos valores
+de salida cada uno asociado con $A(x)$ y $B(x)$. En t\'erminos
+de (\ref{output}) y (\ref{stimulus}), la relaci\'on entre la RNA y la funci\'on de onda
+se expresa como $o_1=A(x)$, $o_2=S(x)$ y $n_1=x$. \ref{fig:nnGaWf}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7cm]{img/fig_nnGaWf.png}
+	\caption{Tres representaciones diferentes de la identidad del estado cu\'antico.}
+	\label{fig:nnGaWf}
+\end{figure}
+
+Aunque nos hemos limitado al sistema 1D por simplicidad, el enfoque
+actual puede expandirse f\'acilmente al sistema multidimensional. Para
+el problema N-dimensional, el perceptr\'on con $N_i = N_k$, $NK = 2$ puede
+usarse para representar la funci\'on de onda $\phi(x_1,x_2,x_3...x_n)$.
+La tercera representaci\'on, cadena del AG se define a trav\'es de los par\'ametros
+RNA. Dado que un conjunto de par\'ametros dado de la RNA \'unicamente
+corresponde a una funci\'on de onda espec\'ifica, la cadena AG generada
+al codificar estos par\'ametros RNA tambi\'en representa de manera \'unica
+la misma identidad del estado cu\'antico. Tenga en cuenta que el valor
+propio $E$ se codifica en la cadena AG junto con los par\'ametros de red
+como se muestra en \ref{fig:nnGaWf}.
+Ahora, describiremos c\'omo resolver la ecuaci\'on de Schr\"odinger usando
+estas representaciones. Para ubicar una soluci\'on aproximada en el vasto
+espacio de b\'usqueda, utilizamos el AG como pre-optimizador. Es necesario
+para definir el puntaje de aptitud f\'isica $f$ para usar el AG. Para este
+prop\'osito, definimos la cantidad que refleja el error contenido en la
+funci\'on de prueba $\phi(x)$
+
+\begin{equation}
+	R=\frac{\left\langle\Psi|(\hat{H}-E)^2|\Psi\right\rangle}{\left\langle\Psi|\Psi\right\rangle}=\frac{\int|(\hat{H}-E)|\Psi(x)|^2 dx}{\int|\Psi(x)|^2 dx}
+	\label{error}
+\end{equation}
+
+Por \'ultimo, la representaci\'on con el AG se define con base en
+los par\'ametros de la RNA. Cada conjunto de par\'ametros de
+la RNA corresponde con una funci\'on de onda especifica, en
+el cromosoma del AG se codifican estos par\'ametros que representan
+la identidad \'unica de un estado cu\'antico. El valor
+propio $E$ se codifica en el cromosoma junto con los par\'ametros
+de la red, \'este identifica a cada conjunto de par\'ametros y
+por ende a cada funci\'on de onda.
+
+Para localizar una soluci\'on aproximada en el espacio de
+b\'usqueda, el AG es utilizado como pre-optimizador, para ello
+es necesario determinar la funci\'on de aptitud $f$, la cual
+representa el medio ambiente dentro del AG. Para ello se define la
+cantidad que refleja el error contenido en la funci\'on de prueba
+$\Psi(x)$
+
+La funci\'on propia que satisface (\ref{schrodinger}) se asocia con $R=0$.
+La funci\'on de aptitud para el problema de optimizaci\'on relacionado
+con el algoritmo gen\'etico, y que se busca maximizar se expresa como:
+
+\begin{equation}
+	f=e^{-R}
+\end{equation}
+
+El resolver el problema de optimizaci\'on con el AG,
+implica encontrar la funci\'on propia y su correspondiente valor
+propio, esto implica encontrar una soluci\'on de la ecuaci\'on
+(\ref{schrodinger}). El operador $\nabla^2$ que aparece en el Hamiltoniano puede
+ser evaluado por la ecuaci\'on (\ref{lamda}).
+
+Para mejorar la eficiencia de b\'usqueda en las primeras generaciones,
+introducimos el m\'etodo de evaluaci\'on de puntos aleatorios (MEPA) y
+redefinimos la cantidad $\tilde{R}$ como
+
+\begin{equation}
+	\tilde{R}=\frac{ \sum^{M}_{x_i} \left| \left(\hat{H}-E\right) \psi \left(x_i\right) \right| ^2 }{ \sum^{M}_{x_i} \left| \psi(x_i) \right| ^2 }
+	\label{rpemEquation}
+\end{equation}
+
+puntaje de aptitud como
+
+\begin{equation}
+	\tilde{f}=e^{-\tilde{R}}
+	\label{fitnessScoreEquation}
+\end{equation}
+
+Aqu\'i, $x_i$ representa los puntos distribuidos aleatoriamente sobre
+el espacio de coordenadas de posici\'on y $M$ denota el n\'umero total de
+puntos aleatorios (PA) introducidos aqu\'i.
+
+El conjunto de RP com\'un se utiliza para evaluar las cadenas que pertenecen
+a la misma generaci\'on y el conjunto de RP se renueva a medida que avanza la
+generaci\'on. Cabe se\~nalar que la puntuaci\'on de aptitud f\'isica $\tilde{f}$ para la
+cadena id\'entica puede tener un valor diferente en diferentes generaciones.
+Los efectos del MEPA sobre la convergencia de la puntuaci\'on de aptitud en las primeras
+generaciones se analizar\'an en las secciones siguientes. La soluci\'on aproximada obtenida
+por la mejora gen\'etica del AG debe refinarse a trav\'es del entrenamiento de
+la red o el proceso de aprendizaje. Para una red de tipo perceptr\'on, es
+ampliamente conocido que la red puede ser entrenada por el procedimiento
+llamado Backpropagation, en el que uno hace que las se\~nales de error
+se propaguen hacia atr\'as para modificar los pesos y los par\'ametros de umbral.
+
+Dado que las derivadas de la salida de la red con respecto a esos par\'ametros
+RNA se conocen como Eqs. \ref{derivativeOfO_kRespectW_ij} - \ref{derivativeOfO_kRespectTheta_k},
+la derivada de $R$ se puede obtener a trav\'es de la definici\'on Eq. \ref{error}
+Usando esas informaciones derivadas, se puede emplear un optimizador determinista
+general para minimizar $R$, como los enfoques basados en gradientes ampliamente
+utilizados. En el presente estudio, adoptamos el m\'etodo de descenso m\'as
+pronunciado para obtener la soluci\'on final.
